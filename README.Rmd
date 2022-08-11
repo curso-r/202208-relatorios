@@ -45,14 +45,13 @@ Fora do horário de aula ou monitoria:
 ## Slides
 
 ```{r}
-paths <- CursoRopen:::list_github_files(params$main_repo, "slides/", "[0-9]-.*html$") %>% 
+paths <- CursoRopen:::list_github_files(params$main_repo, "slides/", "index.*html$") %>% 
   tibble::enframe(value = "paths") %>% 
   dplyr::filter(!stringr::str_detect(paths, "figure-html")) %>% 
   dplyr::mutate(file_path_sem_extencao = tools::file_path_sans_ext(paths)) %>% 
   dplyr::select(-name)
 
-
-paths_pdf <- CursoRopen:::list_github_files(params$main_repo, "slides/", "[0-9]-.*pdf$") %>% 
+paths_pdf <- CursoRopen:::list_github_files(params$main_repo, "slides/", "index.*pdf$") %>% 
   tibble::enframe(value = "paths_pdf") %>% 
   dplyr::mutate(file_path_sem_extencao = tools::file_path_sans_ext(paths_pdf)) %>%
   dplyr::select(-name)
@@ -72,7 +71,7 @@ dplyr::mutate(
 ```
 
 
-## Scripts utilizados em aula
+## Práticas
 
 ```{r}
 pasta <- "exemplos_de_aula/"
@@ -80,31 +79,17 @@ pasta <- "exemplos_de_aula/"
 
 knitr::kable(
   tibble::tibble(
-    script = CursoRopen:::list_github_files(params$main_repo, pasta, ".R$"),
+    script = CursoRopen:::list_github_files(params$turma, pasta, "(\\.Rmd|\\.qmd)$"),
     link = paste0(
       "https://github.com/curso-r/",
       params$turma,
-      "/blob/master/",
+      "/blob/main/",
       script
     )
   ) %>%
     dplyr::mutate(script = glue::glue("[{script}]({link})")) %>%
     dplyr::select(script)
 )
-```
-
-
-## Lição de casa
-
-```{r}
-tibble::tibble(
-  nome = CursoRopen:::list_github_files(params$main_repo, "exercicios/"),
-  link = paste0("https://curso-r.github.io/", params$main_repo, "/", nome),
-  exercicio = glue::glue("[{nome}]({link})")
-) %>%
-    dplyr::filter(!stringr::str_detect(nome, "resolucao_")) %>% 
-  dplyr::select(exercicio) %>% 
-  knitr::kable()
 ```
 
 
@@ -118,7 +103,7 @@ tibble::tibble(
   link = paste0(
     "https://github.com/curso-r/",
     params$turma,
-    "/raw/master/",
+    "/raw/main/",
     script
   ),
   pasta_compactada = glue::glue("[{script}]({link})")
