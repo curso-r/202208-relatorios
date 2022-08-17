@@ -74,12 +74,11 @@ dplyr::mutate(
 ## Práticas
 
 ```{r}
-pasta <- "exemplos_de_aula/"
-
+pasta <- "praticas/"
 
 knitr::kable(
   tibble::tibble(
-    script = CursoRopen:::list_github_files(params$turma, pasta, "(\\.Rmd|\\.qmd)$"),
+    script = dirname(CursoRopen:::list_github_files(params$turma, pasta, "(\\.Rmd)$")),
     link = paste0(
       "https://github.com/curso-r/",
       params$turma,

@@ -29,8 +29,9 @@ Fora do horário de aula ou monitoria:
 
 ## Práticas
 
-| script |
-|:-------|
+| script                                                                                    |
+|:------------------------------------------------------------------------------------------|
+| [praticas/aula-1](https://github.com/curso-r/202208-relatorios/blob/main/praticas/aula-1) |
 
 ## Trabalhos finais premiados
 
