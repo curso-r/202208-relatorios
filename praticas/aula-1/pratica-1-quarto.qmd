@@ -17,7 +17,8 @@ Os objetivos específicos da análise são:
 
 A base de dados disponibilizada pelo [SIGBM - Sistema de Gestão de Segurança de Barragem de Mineração](https://app.anm.gov.br/SIGBM/Publico/ClassificacaoNacionalDaBarragem) apresenta dados referentes à Barragens de Mineração no território brasileiro.
 
-<center>![](img/anm315x66azul_r.png)</center>
+
+<center>![](https://app.anm.gov.br/SIGBM/Content/images/anm315x66azul_r.png)</center>
 
 <br>
 
