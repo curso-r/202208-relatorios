@@ -79,7 +79,7 @@ pasta <- "praticas/"
 
 knitr::kable(
   tibble::tibble(
-    script = dirname(CursoRopen:::list_github_files(params$turma, pasta, "(\\.Rmd)$")),
+    script = unique(dirname(CursoRopen:::list_github_files(params$turma, pasta, "(\\.Rmd|\\.qmd)$"))),
     link = paste0(
       "https://github.com/curso-r/",
       params$turma,
