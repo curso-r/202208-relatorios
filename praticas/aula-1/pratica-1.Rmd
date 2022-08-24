@@ -1,6 +1,6 @@
 ---
 title: "Informações sobre as barragens"
-output: pdf_document
+output: pagedown::html_letter
 date: "2022-08-16"
 ---
 
@@ -12,6 +12,8 @@ Os objetivos específicos da análise são:
 
 -   fazer uma tabela das barragens por estado;
 -   fazer um gráfico do número de barragens por categoria de dano potencial associado;
+
+![](https://c.tenor.com/e-LsbnNHQ5cAAAAM/catjam-cat-dancing.gif)
 
 ## Materiais e métodos
 

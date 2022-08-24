@@ -1,6 +1,6 @@
 ---
 title: "Informações sobre as barragens"
-format: pdf
+format: revealjs
 date: "2022-08-16"
 ---
 
@@ -35,7 +35,9 @@ library(readxl)
 
 ### Download
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
+
 ## ----download-data------------------
 ## # Fazer download da base de dados do dia atual:
 ## # url para baixar os dados
@@ -114,6 +116,6 @@ sigbm |>
   theme_bw() +
   labs(x = "Dano potencial associado (DPA)", y = "Quantidade de barragens",
        title = "Dano potencial associado de barragens de mineração no Brasil")
-
-
 ```
+
+## Aula 2
