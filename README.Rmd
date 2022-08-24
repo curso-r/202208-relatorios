@@ -5,7 +5,7 @@ params:
   trilha_clean: visualizacao
   turma: 202208-relatorios
   nome_curso: Relatórios e apresentações
-  num_aula: '0'
+  num_aula: '1'
   download_material: 'TRUE'
 ---
 
@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 )
 
 library(magrittr)
+# remotes::install_github("curso-r/CursoRopen")
 ```
 
 ## Informações importantes
@@ -137,7 +138,7 @@ id_spreadsheet %>%
   dplyr::mutate(link = glue::glue("[{desc}]({url})")) %>%
   dplyr::select(-desc,-url) %>%
   dplyr::arrange(aula) %>%
-  # dplyr::filter(aula <= params$num_aula) %>%
+  dplyr::filter(aula <= params$num_aula) %>%
   knitr::kable(col.names = c("Aula", "Tema", "Descrição")) 
 }, "erro")
 
