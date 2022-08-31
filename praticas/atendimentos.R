@@ -1,5 +1,4 @@
-
-
+# Aula 2 -------------------------
 mapa <- geobr::read_municipality()
 mapa_mg <- mapa |>
   dplyr::filter(abbrev_state == "MG")
@@ -30,3 +29,9 @@ mapa_mg |>
   labs(
     title = "O IDH municipal é mais alto na parte oeste de MG?"
   )
+
+
+
+# -------------------------------------------------------------------------
+
+
