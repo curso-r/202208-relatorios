@@ -1,0 +1,43 @@
+// importing fonts
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Lato&family=Yanone+Kaffeesatz&display=swap');
+
+$presentation-heading-font: 'Yanone Kaffeesatz',  Tahoma, sans-serif  !default;
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.red {
+  color: red;
+}
+
+.reveal .slide-number {
+  font-family: $presentation-heading-font;
+}
+
+.slide-logo {
+  display: block !important;
+  position: fixed !important;
+  top: 0 !important;
+  right: 10px !important;
+  max-width: 100px !important;
+  height: auto !important;
+  color: $body-color !important;
+}
+
+.slide-number, .reveal.has-logo .slide-number {
+  bottom: 10px !important;
+  right: 10px !important;
+  top: unset !important;
+  color: $body-color !important;
+}
+
+#title-slide {
+
+  background-image: url('https://curso-r.com/images/logo_col_branco.webp');
+  background-repeat: no-repeat;
+  position: absolute
+
+}
+
+

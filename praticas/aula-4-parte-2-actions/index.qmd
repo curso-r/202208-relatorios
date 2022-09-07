@@ -1,0 +1,27 @@
+---
+title: "Exemplo de Actions com Quarto:"
+subtitle: "Gerando fotos de gatinhos!"
+format: revealjs
+---
+
+## Foto da vez!
+
+`r Sys.time()`
+
+```{r}
+gerar_gatinho <- function() {
+  tmp <- tempfile(fileext = ".jpeg")
+  utils::download.file(
+    "https://cataas.com/cat",
+    tmp,
+    quiet = TRUE
+  )
+  tmp |> 
+    jpeg::readJPEG()  |> 
+    grDevices::as.raster()  |> 
+    graphics::plot()
+}
+
+gerar_gatinho()
+
+```

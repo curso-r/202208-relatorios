@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "index.html#foto-da-vez",
+    "href": "index.html#foto-da-vez",
+    "title": "Exemplo de Actions com Quarto:",
+    "section": "Foto da vez!",
+    "text": "Foto da vez!\n2022-09-06 20:59:06"
+  },
+  {
+    "objectID": "sigbm/index.html#abstract",
+    "href": "sigbm/index.html#abstract",
+    "title": "Informações sobre as barragens",
+    "section": "ABSTRACT",
+    "text": "ABSTRACT\n….."
+  },
+  {
+    "objectID": "sigbm/index.html#sec-objetivos",
+    "href": "sigbm/index.html#sec-objetivos",
+    "title": "Informações sobre as barragens",
+    "section": "Objetivos",
+    "text": "Objetivos\nEste relatório tem como objetivo apresentar funcionalidades do R Markdown e do Quarto, utilizando dados públicos sobre barragens de mineração no Brasil.\n\nOs objetivos específicos da análise são:\n\n\nfazer uma tabela das barragens por estado;\n\n\n\nfazer um gráfico do número de barragens por categoria de dano potencial associado;"
+  },
+  {
+    "objectID": "sigbm/index.html#materiais-e-métodos",
+    "href": "sigbm/index.html#materiais-e-métodos",
+    "title": "Informações sobre as barragens",
+    "section": "Materiais e métodos",
+    "text": "Materiais e métodos\nA base de dados disponibilizada pelo SIGBM - Sistema de Gestão de Segurança de Barragem de Mineração apresenta dados referentes à Barragens de Mineração no território brasileiro."
+  },
+  {
+    "objectID": "sigbm/index.html#carregando-os-pacotes",
+    "href": "sigbm/index.html#carregando-os-pacotes",
+    "title": "Informações sobre as barragens",
+    "section": "Carregando os pacotes",
+    "text": "Carregando os pacotes\n\n# Carregar pacotes:\nlibrary(janitor)\nlibrary(tidyverse)\nlibrary(readxl)"
+  },
+  {
+    "objectID": "sigbm/index.html#download-e-leitura-da-base",
+    "href": "sigbm/index.html#download-e-leitura-da-base",
+    "title": "Informações sobre as barragens",
+    "section": "Download e leitura da base",
+    "text": "Download e leitura da base\nDownload\n\n## ----download-data------------------\n## # Fazer download da base de dados do dia atual:\n## # url para baixar os dados\nurl_request <- \"https://app.anm.gov.br/SIGBM/Publico/ClassificacaoNacionalDaBarragem/ExportarExcel\"\n##\n## # cria a pasta dados (se não existir)\nfs::dir_create(\"dados\")\n##\n## # funcão que baixa os dados\nhttr::POST(url_request, httr::write_disk(\"dados/sigbm.xlsx\", overwrite = TRUE))\n\nResponse [https://app.anm.gov.br/SIGBM/Publico/ClassificacaoNacionalDaBarragem/ExportarExcel]\n  Date: 2022-09-07 00:18\n  Status: 200\n  Content-Type: application/vnd.ms-excel\n  Size: 123 kB\n<ON DISK>  /Users/beatrizmilz/Documents/Curso-R/cursos/gatitosQuartoActions/sigbm/dados/sigbm.xlsx"
+  },
+  {
+    "objectID": "sigbm/index.html#barragens-de-mineração-no-brasil",
+    "href": "sigbm/index.html#barragens-de-mineração-no-brasil",
+    "title": "Informações sobre as barragens",
+    "section": "Barragens de mineração no Brasil",
+    "text": "Barragens de mineração no Brasil\nA base do SIGBM foi obtida no dia 06/09/2022, e apresentou informações referentes a 913 barragens."
+  },
+  {
+    "objectID": "sigbm/index.html#tabela",
+    "href": "sigbm/index.html#tabela",
+    "title": "Informações sobre as barragens",
+    "section": "Tabela",
+    "text": "Tabela\n\n\nDez estados brasileiros com mais barragens cadastradas no SIG-BM.\n\n\n\n\n\n \n  \n    Estado \n    Número de barragens \n  \n \n\n  \n    MG \n    348 \n  \n  \n    MT \n    152 \n  \n  \n    PA \n    114 \n  \n  \n    BA \n    82 \n  \n  \n    SP \n    68 \n  \n  \n    RO \n    36 \n  \n  \n    GO \n    22 \n  \n  \n    AP \n    18 \n  \n  \n    MS \n    18 \n  \n  \n    AM \n    15"
+  },
+  {
+    "objectID": "sigbm/index.html#gráfico",
+    "href": "sigbm/index.html#gráfico",
+    "title": "Informações sobre as barragens",
+    "section": "Gráfico",
+    "text": "Gráfico\n\n## ----plot-dpa---------------------------\nsigbm |>\n  count(dano_potencial_associado) |>\n    mutate(\n    dano_potencial_associado = if_else(\n      dano_potencial_associado == \"N/A\",\n      \"Não se aplica\",\n      dano_potencial_associado\n    ),\n    dano_potencial_associado = factor(\n      dano_potencial_associado,\n      levels = c(\"Não se aplica\", \"Baixo\", \"Médio\", \"Alto\")\n    )\n  ) |>\n  ggplot() +\n  aes(x = dano_potencial_associado, y = n) +\n  geom_col(fill = \"lightblue\") +\n  theme_bw() +\n  labs(x = \"Dano potencial associado (DPA)\", y = \"Quantidade de barragens\",\n       title = \"Dano potencial associado de barragens de mineração no Brasil\")"
+  },
+  {
+    "objectID": "sigbm/index.html#gráfico-output",
+    "href": "sigbm/index.html#gráfico-output",
+    "title": "Informações sobre as barragens",
+    "section": "Gráfico",
+    "text": "Gráfico\n\n\n\n\nFigura 1: Gráfico do número de barragens segundo o Dano Potencial Associado"
+  },
+  {
+    "objectID": "sigbm/index.html#código-inline",
+    "href": "sigbm/index.html#código-inline",
+    "title": "Informações sobre as barragens",
+    "section": "Código inline",
+    "text": "Código inline\nA base mtcars possui 32 carros. As colunas presentes na base são mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, e carb."
+  },
+  {
+    "objectID": "sigbm/index.html#equações-com-latex",
+    "href": "sigbm/index.html#equações-com-latex",
+    "title": "Informações sobre as barragens",
+    "section": "Equações com Latex",
+    "text": "Equações com Latex\nA equação da média é \\({\\text{Média}=\\frac {a_{1}+a_{2}+\\cdots +a_{n}}{n}}\\), sendo usada amplamente para análises descritivas.\n\\[{\\text{Média}=\\frac {a_{1}+a_{2}+\\cdots +a_{n}}{n}}\\]"
+  },
+  {
+    "objectID": "sigbm/index.html#adicionar-referências",
+    "href": "sigbm/index.html#adicionar-referências",
+    "title": "Informações sobre as barragens",
+    "section": "Adicionar referências",
+    "text": "Adicionar referências\nOutros estudos utilizaram dados do SIGBM, como LEÃO; SANTIAGO (2022)\nEsse relatório foi feito usando R (rstats?) e os pacotes tidyverse (wickham2019?), janitor (FIRKE, 2021), ggplot2 (WICKHAM, 2016).\n\nknitr::write_bib(file = \"packages.bib\")"
+  },
+  {
+    "objectID": "sigbm/index.html#referência-cruzada",
+    "href": "sigbm/index.html#referência-cruzada",
+    "title": "Informações sobre as barragens",
+    "section": "Referência cruzada",
+    "text": "Referência cruzada\nNa Seção 2 , descrevemos os objetivos deste documento.\nNos objetivos 2, descrevemos os objetivos deste documento.\nNa Figura 1, vemos que a maior quantidade de barragens …"
+  },
+  {
+    "objectID": "sigbm/index.html#parâmetros",
+    "href": "sigbm/index.html#parâmetros",
+    "title": "Informações sobre as barragens",
+    "section": "Parâmetros",
+    "text": "Parâmetros\n\nparams$estado\n\n[1] \"MG\"\n\n\n\nsigbm_filtrado <- sigbm |> \n  filter(uf == params$estado)\n\nDaqui em diante, o relatório será baseado nas barragens do estado MG. Existem 348 barragens cadastradas no SIGBM neste estado.\n\nsigbm_filtrado |> \n  count(minerio_principal, uf, sort = TRUE) |> \n  slice(1:10) |> \n  knitr::kable()\n\n\n\n \n  \n    minerio_principal \n    uf \n    n \n  \n \n\n  \n    Minério de Ferro \n    MG \n    167 \n  \n  \n    NA \n    MG \n    35 \n  \n  \n    Argila Arenosa \n    MG \n    24 \n  \n  \n    Fosfato \n    MG \n    19 \n  \n  \n    Minério de Ouro Primário \n    MG \n    18 \n  \n  \n    Argila \n    MG \n    10 \n  \n  \n    Xisto \n    MG \n    7 \n  \n  \n    Areia \n    MG \n    6 \n  \n  \n    Calcário Dolomítico \n    MG \n    6 \n  \n  \n    Cascalho \n    MG \n    6"
+  },
+  {
+    "objectID": "sigbm/index.html#referências",
+    "href": "sigbm/index.html#referências",
+    "title": "Informações sobre as barragens",
+    "section": "Referências",
+    "text": "Referências\n\n\n\nAnálise feita pela turma de 2022-08\n\n\n\nFIRKE, S. janitor: Simple Tools for Examining and Cleaning Dirty Data. [s.l: s.n.].\n\n\nLEÃO, S. R.; SANTIAGO, A. M. DOS S. Cenário das barragens de rejeito: conhecer para evitar novas catástrofes. Ambiente & Sociedade, v. 25, 2022.\n\n\nWICKHAM, H. ggplot2: Elegant Graphics for Data Analysis. [s.l.] Springer-Verlag New York, 2016."
+  }
+]
