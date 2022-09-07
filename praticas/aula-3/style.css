@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&family=Fira+Code&family=Quicksand&display=swap');
+
+
+h1, h2, h3, h4{
+  color: #009d8f;
+  font-family: 'Comic Neue', cursive;
+}
+
+p{
+  font-family: 'Quicksand', sans-serif;
+}
+
+code{
+  font-family: 'Fira Code', monospace;
+}
+
+.sourceCode .r{
+  background-color: #ddf0ff;
+}
+
+
+a{
+  color: #ff00bf;
+}
+
+
+.logo-topo{
+  max-width: 300px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
