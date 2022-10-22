@@ -21,6 +21,12 @@ Fora do horário de aula ou monitoria:
 -   perguntas sobre R, principalmente as que envolverem código, deverão
     ser enviadas no [nosso fórum](https://discourse.curso-r.com/).
 
+## Trabalho final premiado
+
+-   [Jean da
+    Silva](https://curso-r.github.io/202208-relatorios/trabalhos_premiados/Jean-da-Silva/index.html) -
+    [Código](https://github.com/curso-r/202208-relatorios/tree/main/trabalhos_premiados/Jean-da-Silva)
+
 ## Slides
 
 | slides                                                                    | pdf                                                                     |
